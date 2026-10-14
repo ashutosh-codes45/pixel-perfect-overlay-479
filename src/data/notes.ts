@@ -4,7 +4,7 @@ export interface Folder {
   id: string;
   name: string;
   color: FolderColor;
-  emoji: string;
+  icon: "atom" | "flask" | "leaf" | "network";
 }
 
 export interface NoteSection {
@@ -22,10 +22,10 @@ export interface Note {
 }
 
 export const folders: Folder[] = [
-  { id: "physics", name: "Physics", color: "lavender", emoji: "⚛️" },
-  { id: "chemistry", name: "Chemistry", color: "mint", emoji: "🧪" },
-  { id: "biology", name: "Biology", color: "peach", emoji: "🌿" },
-  { id: "dsa", name: "Data Structures", color: "sky", emoji: "🧩" },
+  { id: "physics", name: "Physics", color: "lavender", icon: "atom" },
+  { id: "chemistry", name: "Chemistry", color: "mint", icon: "flask" },
+  { id: "biology", name: "Biology", color: "peach", icon: "leaf" },
+  { id: "dsa", name: "Data Structures", color: "sky", icon: "network" },
 ];
 
 export const notes: Note[] = [
