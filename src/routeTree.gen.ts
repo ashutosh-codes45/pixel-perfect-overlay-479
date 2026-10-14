@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CleanupRouteImport } from './routes/cleanup'
+import { Route as FiledRouteImport } from './routes/filed'
+import { Route as FoldersRouteImport } from './routes/folders'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as NotesIdRouteImport } from './routes/notes.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CleanupRoute = CleanupRouteImport.update({
+  id: '/cleanup',
+  path: '/cleanup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiledRoute = FiledRouteImport.update({
+  id: '/filed',
+  path: '/filed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoldersRoute = FoldersRouteImport.update({
+  id: '/folders',
+  path: '/folders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotesIdRoute = NotesIdRouteImport.update({
+  id: '/notes/$id',
+  path: '/notes/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cleanup': typeof CleanupRoute
+  '/filed': typeof FiledRoute
+  '/folders': typeof FoldersRoute
+  '/home': typeof HomeRoute
+  '/notes/$id': typeof NotesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cleanup': typeof CleanupRoute
+  '/filed': typeof FiledRoute
+  '/folders': typeof FoldersRoute
+  '/home': typeof HomeRoute
+  '/notes/$id': typeof NotesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cleanup': typeof CleanupRoute
+  '/filed': typeof FiledRoute
+  '/folders': typeof FoldersRoute
+  '/home': typeof HomeRoute
+  '/notes/$id': typeof NotesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/cleanup' | '/filed' | '/folders' | '/home' | '/notes/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cleanup' | '/filed' | '/folders' | '/home' | '/notes/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/cleanup'
+    | '/filed'
+    | '/folders'
+    | '/home'
+    | '/notes/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CleanupRoute: typeof CleanupRoute
+  FiledRoute: typeof FiledRoute
+  FoldersRoute: typeof FoldersRoute
+  HomeRoute: typeof HomeRoute
+  NotesIdRoute: typeof NotesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +105,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cleanup': {
+      id: '/cleanup'
+      path: '/cleanup'
+      fullPath: '/cleanup'
+      preLoaderRoute: typeof CleanupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filed': {
+      id: '/filed'
+      path: '/filed'
+      fullPath: '/filed'
+      preLoaderRoute: typeof FiledRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/folders': {
+      id: '/folders'
+      path: '/folders'
+      fullPath: '/folders'
+      preLoaderRoute: typeof FoldersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes/$id': {
+      id: '/notes/$id'
+      path: '/notes/$id'
+      fullPath: '/notes/$id'
+      preLoaderRoute: typeof NotesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CleanupRoute: CleanupRoute,
+  FiledRoute: FiledRoute,
+  FoldersRoute: FoldersRoute,
+  HomeRoute: HomeRoute,
+  NotesIdRoute: NotesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
