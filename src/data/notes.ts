@@ -270,12 +270,12 @@ export function revisionPack(note: Note): { pointers: string[]; qa: QA[] } {
   const qa: QA[] = all.map((b) => {
     const [term, ...rest] = b.split(":");
     return rest.length
-      ? { q: `What do you know about “${term.trim()}”?`, a: rest.join(":").trim() }
+      ? { q: `What do you know about “${(term ?? "").trim()}”?`, a: rest.join(":").trim() }
       : { q: "Complete the idea:", a: b };
   });
   let i = 0;
   while (qa.length < 10) {
-    const s = note.sections[i % note.sections.length];
+    const s = note.sections[i % note.sections.length]!;
     qa.push({ q: `Summarise “${s.heading}” in one line.`, a: s.bullets.join("; ") });
     i++;
   }

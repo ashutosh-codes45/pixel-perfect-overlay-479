@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Folders from "@/pages/Folders";
 
-type S = { q?: string; folder?: string };
+type S = { q?: string | undefined; folder?: string | undefined };
 
 export const Route = createFileRoute("/folders")({
   validateSearch: (s: Record<string, unknown>): S => ({
-    q: typeof s.q === "string" && s.q ? s.q : undefined,
-    folder: typeof s.folder === "string" ? s.folder : undefined,
+    q: typeof s["q"] === "string" && s["q"] ? s["q"] : undefined,
+    folder: typeof s["folder"] === "string" ? s["folder"] : undefined,
   }),
   head: () => ({
     meta: [

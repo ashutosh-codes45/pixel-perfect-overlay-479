@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { folders, getFolder, notes, notesInFolder } from "@/data/notes";
 import { cn } from "@/lib/utils";
 
-export default function Folders({ q = "", folder }: { q?: string; folder?: string }) {
+export default function Folders({ q = "", folder }: { q?: string | undefined; folder?: string | undefined }) {
   const navigate = useNavigate();
   const active = folder ? getFolder(folder) : undefined;
   const setQ = (v: string) =>

@@ -32,7 +32,7 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
     el.classList.toggle("a11y-dyslexic", prefs.dyslexic);
     el.classList.toggle("a11y-contrast", prefs.contrast);
     el.classList.toggle("a11y-reduce-motion", prefs.reduceMotion);
-    el.dataset.textSize = String(prefs.textSize);
+    el.dataset["textSize"] = String(prefs.textSize);
     localStorage.setItem("clearly-prefs", JSON.stringify(prefs));
   }, [prefs]);
 
