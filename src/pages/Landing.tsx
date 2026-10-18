@@ -6,7 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Logo } from "@/components/Logo";
 import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 import { usePrefs } from "@/components/preferences";
-import beforeAfter from "@/assets/before-after.jpg";
+import { CompareSlider } from "@/components/CompareSlider";
+import { NoteContent } from "@/components/NoteContent";
+import { getNote } from "@/data/notes";
+import messy from "@/assets/messy-notes.jpg";
 
 function GoogleMark() {
   return (
@@ -24,6 +27,7 @@ export default function Landing() {
   const [showEmail, setShowEmail] = useState(false);
   const { prefs, set } = usePrefs();
   const go = () => navigate({ to: "/home" });
+  const thermoNote = getNote("thermodynamics")!;
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,7 +47,7 @@ export default function Landing() {
             ✦ Made for students
           </span>
           <h1 className="text-4xl leading-[1.1] font-bold tracking-tight text-balance md:text-6xl">
-            From messy notes to exam-ready in one tap
+            From messy notes to <span className="whitespace-nowrap">exam-ready</span> in one tap
           </h1>
           <p className="mt-6 max-w-md text-lg text-muted-foreground">
             Snap your handwritten lecture notes. Clearly cleans them up, files them, and builds your revision pack.
@@ -78,12 +82,16 @@ export default function Landing() {
         </section>
 
         <figure className="animate-enter">
-          <img
-            src={beforeAfter}
-            width={1536}
-            height={960}
-            alt="A messy handwritten photosynthesis page on the left and the same notes cleanly typed and organised on the right"
-            className="w-full rounded-3xl border shadow-lift"
+          <CompareSlider
+            before={
+              <img
+                src={messy}
+                alt="Original handwritten thermodynamics notes"
+                className="size-full object-cover object-top"
+                draggable={false}
+              />
+            }
+            after={<NoteContent note={thermoNote} compact />}
           />
           <figcaption className="mt-3 text-center text-sm text-muted-foreground">
             Before → after, in about 4 seconds. <Link to="/home" className="text-primary underline-offset-4 hover:underline">Try it</Link>

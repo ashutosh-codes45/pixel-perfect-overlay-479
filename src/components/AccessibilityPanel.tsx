@@ -2,6 +2,12 @@ import { Accessibility } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { usePrefs } from "./preferences";
 import { cn } from "@/lib/utils";
 
@@ -14,13 +20,19 @@ export function AccessibilityPanel() {
   ] as const;
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Accessibility settings">
-          <Accessibility />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent align="end" className="w-80 rounded-2xl p-4">
+    <TooltipProvider>
+      <Popover>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Accessibility settings">
+                <Accessibility />
+              </Button>
+            </PopoverTrigger>
+          </TooltipTrigger>
+          <TooltipContent>Accessibility settings</TooltipContent>
+        </Tooltip>
+        <PopoverContent align="end" className="w-80 rounded-2xl p-4">
         <h2 className="text-base font-semibold">Accessibility</h2>
         <p className="mb-4 text-sm text-muted-foreground">Make Clearly comfortable for you.</p>
         <div className="space-y-4">
@@ -63,5 +75,6 @@ export function AccessibilityPanel() {
         </div>
       </PopoverContent>
     </Popover>
+    </TooltipProvider>
   );
 }

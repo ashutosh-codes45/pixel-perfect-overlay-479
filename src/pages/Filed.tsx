@@ -17,7 +17,19 @@ export default function Filed() {
 
   return (
     <AppShell>
-      <div className="mx-auto flex max-w-lg flex-col items-center py-8 text-center">
+      <div className="mx-auto flex max-w-lg flex-col items-center py-6 text-center">
+        <div className="mb-6 flex w-full flex-col gap-1.5" role="progressbar" aria-valuenow={3} aria-valuemin={1} aria-valuemax={4} aria-label="Step 3 of 4">
+          <div className="flex items-center justify-between text-xs font-medium text-muted-foreground">
+            <span className="font-semibold text-foreground">Step 3 of 4</span>
+            <span>Organizing note</span>
+          </div>
+          <div className="flex h-1.5 w-full gap-1.5 overflow-hidden rounded-full">
+            <div className="h-full flex-1 rounded-full bg-primary" />
+            <div className="h-full flex-1 rounded-full bg-primary" />
+            <div className="h-full flex-1 rounded-full bg-primary" />
+            <div className="h-full flex-1 rounded-full bg-muted" />
+          </div>
+        </div>
         <div className="grid size-20 place-items-center rounded-full bg-success/15 animate-pop">
           <span className="grid size-14 place-items-center rounded-full bg-success text-success-foreground">
             <Check className="size-8" strokeWidth={3} aria-hidden />
