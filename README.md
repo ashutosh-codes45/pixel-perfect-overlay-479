@@ -77,8 +77,8 @@ TanStack Start, React, TypeScript, Tailwind CSS, shadcn/ui. Built with AI assist
 ## Run locally
 
 ```
-git clone <this-repository-url>
-cd <repository-name>
+git clone https://github.com/ashutosh-codes45/pixel-perfect-overlay-479.git
+cd pixel-perfect-overlay-479
 npm install
 npm run dev
 ```
